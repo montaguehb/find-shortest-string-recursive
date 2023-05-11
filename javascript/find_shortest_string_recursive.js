@@ -1,5 +1,12 @@
+const words = require("an-array-of-english-words")
+
 function findShortestStringRecursive(arr) {
   // type your code here
+  if(arr.length === 1) {
+    return arr[0]
+  }
+  const str = findShortestStringRecursive(arr.slice(1))
+  return arr[0].length < str.length?arr[0]:str
 }
 
 if (require.main === module) {
@@ -16,6 +23,8 @@ if (require.main === module) {
 
   console.log("Expecting: 'lily'");
   console.log("=>", findShortestStringRecursive(['flower', 'juniper', 'lily', 'dandelion']));
+
+  console.log(findShortestStringRecursive(words))
 }
 
 module.exports = findShortestStringRecursive;
